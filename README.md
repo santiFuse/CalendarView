@@ -43,7 +43,7 @@ DatePickerController
         dataModel.yearStart = 2016;
         dataModel.monthStart = 6;
         dataModel.monthCount = 16;
-        dataModel.defTag = "￥100";
+        dataModel.defTag = "100";
         dataModel.leastDaysNum = 2;
         dataModel.mostDaysNum = 100;
 
