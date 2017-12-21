@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'com.github.santiFuse'
@@ -22,6 +21,13 @@ android {
     }
 }
 
+allprojects {
+    repositories {
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
@@ -33,4 +39,5 @@ publish {
     userOrg = 'santiFuse'
     groupId = 'com.santiFuse'
     artifactId = 'calendarview'
+    publishVersion = '1.0'
 }
