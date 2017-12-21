@@ -15,6 +15,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url "https://jitpack.io" }
     }
     tasks.withType(Javadoc) {
         options{
@@ -23,6 +24,10 @@ allprojects {
             links "http://docs.oracle.com/javase/7/docs/api"
         }
     }
+}
+
+dependencies {
+    compile 'com.github.santifuse:calendarview:1.1.2'
 }
 
 task clean(type: Delete) {

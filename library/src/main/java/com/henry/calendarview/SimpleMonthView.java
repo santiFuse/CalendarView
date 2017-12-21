@@ -55,7 +55,7 @@ class SimpleMonthView extends View {
     private List<SimpleMonthAdapter.CalendarDay> mBusyDays;             // 被占用的日期
     private SimpleMonthAdapter.CalendarDay mNearestDay;                 // 比离入住日期大且是最近的已被占用或者无效日期
     private List<SimpleMonthAdapter.CalendarDay> mCalendarTags;         // 日期下面的标签
-    private String mDefTag = "标签";
+    private String mDefTag = "";
 
     protected int mPadding = 0;
 
@@ -128,8 +128,8 @@ class SimpleMonthView extends View {
         mCalendar = Calendar.getInstance();
         today = new Time(Time.getCurrentTimezone());
         today.setToNow();
-        mDayOfWeekTypeface = resources.getString(R.string.sans_serif);
-        mMonthTitleTypeface = resources.getString(R.string.sans_serif);
+        mDayOfWeekTypeface = typedArray.getString(R.styleable.DayPickerView_font);
+        mMonthTitleTypeface = typedArray.getString(R.styleable.DayPickerView_font);
         mCurrentDayTextColor = typedArray.getColor(R.styleable.DayPickerView_colorCurrentDay, resources.getColor(R.color.normal_day));
         mYearMonthTextColor = typedArray.getColor(R.styleable.DayPickerView_colorYearMonthText, resources.getColor(R.color.normal_day));
         mWeekTextColor = typedArray.getColor(R.styleable.DayPickerView_colorWeekText, resources.getColor(R.color.normal_day));
@@ -234,7 +234,7 @@ class SimpleMonthView extends View {
     }
 
     private void onDayClick(SimpleMonthAdapter.CalendarDay calendarDay) {
-        if (mOnDayClickListener != null && (isPrevDayEnabled || !prevDay(calendarDay.day, today))) {
+        if (mOnDayClickListener != null) {
             mOnDayClickListener.onDayClick(this, calendarDay);
         }
     }
@@ -277,19 +277,19 @@ class SimpleMonthView extends View {
             cellCalendar.setDay(mYear, mMonth, day);
 
             // 当天
-            boolean isToady = false;
+            boolean isToday = false;
             if (mHasToday && (mToday == day)) {
-                isToady = true;
-                canvas.drawText("今天", x, getTextYCenter(mDayTextPaint, y - DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
+                isToday = true;
+                canvas.drawText(Integer.toString(mToday), x, getTextYCenter(mDayTextPaint, y - DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
             }
             // 已过去的日期
             boolean isPrevDay = false;
-            if (!isPrevDayEnabled && prevDay(day, today)) {
+            /*if (!isPrevDayEnabled && prevDay(day, today)) {
                 isPrevDay = true;
                 mDayTextPaint.setColor(mPreviousDayTextColor);
                 mDayTextPaint.setTypeface(Typeface.defaultFromStyle(Typeface.ITALIC));
                 canvas.drawText(String.format("%d", day), x, y, mDayTextPaint);
-            }
+            }*/
 
             boolean isBeginDay = false;
             // 绘制起始日期的方格
@@ -297,9 +297,9 @@ class SimpleMonthView extends View {
                 isBeginDay = true;
                 drawDayBg(canvas, x, y, mSelectedDayBgPaint);
                 mDayTextPaint.setColor(mSelectedDayTextColor);
-                canvas.drawText("入住", x, getTextYCenter(mDayTextPaint, y + DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
-                if(isToady) {
-                    canvas.drawText("今天", x, getTextYCenter(mDayTextPaint, y - DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
+                canvas.drawText(mDefTag, x, getTextYCenter(mDayTextPaint, y + DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
+                if(isToday) {
+                    canvas.drawText(Integer.toString(mToday), x, getTextYCenter(mDayTextPaint, y - DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
                 }
             }
 
@@ -309,7 +309,7 @@ class SimpleMonthView extends View {
                 isLastDay = true;
                 drawDayBg(canvas, x, y, mSelectedDayBgPaint);
                 mDayTextPaint.setColor(mSelectedDayTextColor);
-                canvas.drawText("退房", x, getTextYCenter(mDayTextPaint, y + DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
+                canvas.drawText("TEST", x, getTextYCenter(mDayTextPaint, y + DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
             }
 
             // 在入住和退房之间的日期
@@ -343,7 +343,7 @@ class SimpleMonthView extends View {
 //                            canvas.drawRoundRect(rectF, 10.0f, 10.0f, mBusyDayBgPaint);
                             mDayTextPaint.setColor(mBusyDaysTextColor);
                         }
-                        canvas.drawText("已租", x, getTextYCenter(mBusyDayBgPaint, y + DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
+                        canvas.drawText("TEST2", x, getTextYCenter(mBusyDayBgPaint, y + DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
                     }
                     canvas.drawText(String.format("%d", day), x, getTextYCenter(mTagTextPaint, y - DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
                 }
@@ -351,7 +351,7 @@ class SimpleMonthView extends View {
 
             // 禁用的日期
             boolean isInvalidDays = false;
-            for (SimpleMonthAdapter.CalendarDay calendarDay : mInvalidDays) {
+            /*for (SimpleMonthAdapter.CalendarDay calendarDay : mInvalidDays) {
 
                 if (cellCalendar.equals(calendarDay) && !isPrevDay) {
                     isBusyDay = true;
@@ -376,7 +376,7 @@ class SimpleMonthView extends View {
                     }
                     canvas.drawText(String.format("%d", day), x, getTextYCenter(mTagTextPaint, y - DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
                 }
-            }
+            }*/
 
             // 把入住日期之前和不可用日期之后的日期全部灰掉(思路：
             // 1:入住日期和退房日期不能同一天
@@ -407,7 +407,7 @@ class SimpleMonthView extends View {
             }
 
             // 绘制日期
-            if (!isToady && !isPrevDay && !isInvalidDays && !isBusyDay) {
+            if (!isToday && !isPrevDay && !isInvalidDays && !isBusyDay) {
                 canvas.drawText(String.format("%d", day), x, getTextYCenter(mTagTextPaint, y - DAY_SELECTED_RECT_SIZE / 2), mDayTextPaint);
             }
 

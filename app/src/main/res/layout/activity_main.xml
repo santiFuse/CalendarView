@@ -7,18 +7,19 @@
     tools:context="com.henry.calendarviewsample.MainActivity">
 
     <com.henry.calendarview.DayPickerView
+        android:background="#FFFFFF"
         android:id="@+id/dpv_calendar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:colorCurrentDay="@color/colorAccent"
         app:colorSelectedDayBackground="@color/colorAccent"
         app:colorSelectedDayText="@color/selected_day_text"
-        app:colorPreviousDayText="#727272"
+        app:colorPreviousDayText="@color/selected_day_text"
         app:colorNormalDayText="#727272"
         app:colorYearMonthText="#727272"
         app:colorWeekText="#727272"
-        app:colorBusyDaysBg="#727272"
-        app:colorInValidDaysBg="#727272"
+        app:colorBusyDaysBg="#FFFFFF"
+        app:colorInValidDaysBg="@color/selected_day_text"
         app:colorBusyDaysText="#FFFFFF"
         app:colorInValidDaysText="#FFFFFF"
 

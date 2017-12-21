@@ -25,12 +25,7 @@ public class MainActivity extends AppCompatActivity {
         dayPickerView = (DayPickerView) findViewById(R.id.dpv_calendar);
 
         DayPickerView.DataModel dataModel = new DayPickerView.DataModel();
-        dataModel.yearStart = 2016;
-        dataModel.monthStart = 6;
-        dataModel.monthCount = 16;
         dataModel.defTag = "￥100";
-        dataModel.leastDaysNum = 2;
-        dataModel.mostDaysNum = 100;
 
         List<SimpleMonthAdapter.CalendarDay> invalidDays = new ArrayList<>();
         SimpleMonthAdapter.CalendarDay invalidDay1 = new SimpleMonthAdapter.CalendarDay(2016, 8, 10);
@@ -55,10 +50,10 @@ public class MainActivity extends AppCompatActivity {
 //        SimpleMonthAdapter.SelectedDays<SimpleMonthAdapter.CalendarDay> selectedDays = new SimpleMonthAdapter.SelectedDays<>(startDay, endDay);
 //        dataModel.selectedDays = selectedDays;
 
-        SimpleMonthAdapter.CalendarDay tag = new SimpleMonthAdapter.CalendarDay(2016, 7, 15);
+        SimpleMonthAdapter.CalendarDay tag = new SimpleMonthAdapter.CalendarDay(2017, 12, 25);
         tag.setTag("标签1");
 
-        SimpleMonthAdapter.CalendarDay tag2 = new SimpleMonthAdapter.CalendarDay(2016, 8, 15);
+        SimpleMonthAdapter.CalendarDay tag2 = new SimpleMonthAdapter.CalendarDay(2017, 12, 27);
         tag2.setTag("标签2");
         List<SimpleMonthAdapter.CalendarDay> tags = new ArrayList<>();
         tags.add(tag);

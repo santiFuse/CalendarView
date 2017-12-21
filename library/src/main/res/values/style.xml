@@ -22,6 +22,7 @@
         <attr name="selectedDayRadius" format="dimension" />        <!-- 日期半径 -->
         <attr name="calendarHeight" format="dimension" />           <!-- 行高 -->
         <attr name="enablePreviousDay" format="boolean" />          <!-- 已过去的日期是否能被操作 -->
+        <attr name="font" format="string" />          <!-- 已过去的日期是否能被操作 -->
         <!--<attr name="drawRoundRect" format="boolean" />-->
         <!--<attr name="leastsSeleDaysNum" format="integer" />-->
         <!--<attr name="mostSeleDaysNum" format="integer" />-->
