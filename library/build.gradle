@@ -28,10 +28,8 @@ dependencies {
 }
 
 publish {
-    userOrg = 'henry0311'
-    groupId = 'com.henry'
+    userOrg = 'santiFuse'
+    groupId = 'com.santiFuse'
     artifactId = 'calendarview'
-    publishVersion = '1.1.2'
-    desc = 'fix bug'
-    website = 'https://github.com/henry-newbie/CalendarView'
+    publishVersion = '1.0'
 }

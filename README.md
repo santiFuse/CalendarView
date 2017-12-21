@@ -1,20 +1,13 @@
 # CalendarView
 ================
 
-CalendarView是一个高度定制的日期选择器，可以满足多选日期的需求。
-
-![CalendarView GIF](https://github.com/henry-newbie/CalendarView/blob/master/screenshot/calendar.gif)
+CalendarView
  
-### 集成
-该库已上传到Jcenter中, 可以再build.gradle中直接添加
-
 	dependencies {
 	    compile 'com.henry:calendarview:1.1.2'
 	}
  
-### 使用
- 
-在xml文件中声明DayPickerView
+DayPickerView
 
 
     <com.henry.calendarview.DayPickerView
@@ -44,7 +37,7 @@ CalendarView是一个高度定制的日期选择器，可以满足多选日期�
          
 
 
-然后在你的代码中设置DataModel（参数集），DatePickerController（回调接口）
+DatePickerController
 
         DayPickerView.DataModel dataModel = new DayPickerView.DataModel();
         dataModel.yearStart = 2016;
@@ -71,43 +64,33 @@ CalendarView是一个高度定制的日期选择器，可以满足多选日期�
             }
         });
 
-onDayOfMonthSelected(SimpleMonthAdapter.CalendarDay calendarDay);          点击日期回调函数
+onDayOfMonthSelected(SimpleMonthAdapter.CalendarDay calendarDay);          
 
-onDateRangeSelected(List<SimpleMonthAdapter.CalendarDay> selectedDays);    选择日期范围回调函数
+onDateRangeSelected(List<SimpleMonthAdapter.CalendarDay> selectedDays);    
 
-alertSelectedFail(FailEven even);										   异常回调函数
+alertSelectedFail(FailEven even);										   
 
 ---
 
-### 定制
-
     <declare-styleable name="DayPickerView">
-        <attr name="colorCurrentDay" format="color"/>               <!-- 今天字体颜色 -->
-        <attr name="colorSelectedDayBackground" format="color"/>    <!-- 被选中的日期背景颜色 -->
-        <attr name="colorSelectedDayText" format="color"/>          <!-- 被选中的日期字体颜色 -->
-        <attr name="colorPreviousDayText" format="color"/>          <!-- 已过去的日期字体颜色 -->
-        <attr name="colorNormalDayText" format="color" />           <!-- 正常日期颜色 -->
-        <attr name="colorYearMonthText" format="color" />           <!-- 头部年份月份字体颜色 -->
-        <attr name="colorWeekText" format="color" />                <!-- 头部星期几字体颜色 -->
-        <attr name="colorBusyDaysBg" format="color" />              <!-- 被占用的日期背景颜色 -->
-        <attr name="colorInValidDaysBg" format="color" />           <!-- 禁用的日期背景颜色 -->
-        <attr name="colorBusyDaysText" format="color" />            <!-- 被占用的日期字体颜色 -->
-        <attr name="colorInValidDaysText" format="color" />         <!-- 禁用的日期字体颜色 -->
+        <attr name="colorCurrentDay" format="color"/>               
+        <attr name="colorSelectedDayBackground" format="color"/>    
+        <attr name="colorSelectedDayText" format="color"/>          
+        <attr name="colorPreviousDayText" format="color"/>          
+        <attr name="colorNormalDayText" format="color" />           
+        <attr name="colorYearMonthText" format="color" />          
+        <attr name="colorWeekText" format="color" />                
+        <attr name="colorBusyDaysBg" format="color" />              
+        <attr name="colorInValidDaysBg" format="color" />           
+        <attr name="colorBusyDaysText" format="color" />           
+        <attr name="colorInValidDaysText" format="color" />         
 
-        <attr name="textSizeDay" format="dimension"/>               <!-- 正常日期字体大小 -->
-        <attr name="textSizeTag" format="dimension"/>               <!-- 标签字体大小 -->
-        <attr name="textSizeYearMonth" format="dimension" />        <!-- 头部年份月份字体大小 -->
-        <attr name="textSizeWeek" format="dimension" />             <!-- 头部星期几字体大小 -->
-        <attr name="headerMonthHeight" format="dimension" />        <!-- 头部高度 -->
-        <attr name="selectedDayRadius" format="dimension" />        <!-- 日期半径 -->
-        <attr name="calendarHeight" format="dimension" />           <!-- 行高 -->
-        <attr name="enablePreviousDay" format="boolean" />          <!-- 已过去的日期是否能被操作 -->
+        <attr name="textSizeDay" format="dimension"/>              
+        <attr name="textSizeTag" format="dimension"/>              
+        <attr name="textSizeYearMonth" format="dimension" />       
+        <attr name="textSizeWeek" format="dimension" />             
+        <attr name="headerMonthHeight" format="dimension" />       
+        <attr name="selectedDayRadius" format="dimension" />       
+        <attr name="calendarHeight" format="dimension" />          
+        <attr name="enablePreviousDay" format="boolean" />         
 	</declare-styleable>
-
-### 联系我
-
-有问题可以直接在issues中反馈，我会及时fix，欢迎start。
-
-### 感谢
-
-Thanks to [CalendarListview](https://github.com/traex/CalendarListview)。

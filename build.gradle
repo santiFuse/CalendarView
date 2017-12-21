@@ -27,7 +27,7 @@ allprojects {
 }
 
 dependencies {
-    compile 'com.github.santifuse:calendarview:1.1.2'
+    compile 'com.github.santifuse:calendarview:e0f80af'
 }
 
 task clean(type: Delete) {
